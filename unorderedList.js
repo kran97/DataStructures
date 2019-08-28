@@ -8,7 +8,8 @@ class linkedListNode{
     }
 }
 
-var inputData = fs.readFileSync('file1.txt', 'utf-8').toString().split(" "); //reading file in array
+var inputData = fs.readFileSync('file1.txt').toString().split(" "); //reading file in array
+console.log(inputData);
 var head = new linkedListNode(null);
 var nHead = head;
 for(var i in inputData)     //taking file input in linked list
@@ -49,9 +50,7 @@ else
 {
     while(temp1.next!= null)
     {
-        //console.log(temp1.next.data)
-        console.log(word);
-        if(temp1.next.data ==  word)
+        if(temp1.next.data == word)
         {
             temp1.next = temp1.next.next;
             del = 1;
