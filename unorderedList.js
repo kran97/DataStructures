@@ -1,3 +1,21 @@
+/******************************************************************************
+ * Execution    :   default node            terminal> node unorderedList.js
+ * 
+ * Purpose      :   To read input from file and put the words in linked list and take innput
+ *                  from user to see if the word is there. if yes then delete, else add it to
+ *                  list and write it to file.
+ * 
+ * @description
+ * 
+ * @file        :   unorderedList.js
+ * @overview    :   To read input from file and put the words in linked list and take innput
+ *                  from user to see if the word is there. if yes then delete, else add it to
+ *                  list and write it to file.
+ * @author      :   Karan Gupta
+ * @version     :   1.0
+ * @since       :   28-08-2019
+*******************************************************************************/
+
 const fs = require('fs');
 var read = require('readline-sync');
 //const unorderVar = require('./utility/utility');
@@ -33,7 +51,7 @@ while(current!=null)
     current = current.next;
 }
 var word = read.question("Enter the word : ");
-var temp1 = head;           //for deletion of word
+var temp1 = head;           //for searching and deletion of word
 var del = 0;
 if(head.data === word)
 {
@@ -58,7 +76,7 @@ else
         }
         temp1 = temp1.next;
     }
-    if(del!=1)
+    if(del!=1)          //if word not found in linked list
     {
         console.log("word not found in linked list. It will be added."); //addition of word if not there already
         var temp3 = head;
@@ -78,9 +96,12 @@ while(current1!=null)
     console.log(current1.data);
     current1 = current1.next;
 }
-/*var temp5 = head;;
+
+var str = '';
+var temp5 = head;
 while(temp5!=null)
 {
-    fs.writeFileSync('file1.txt', temp5.data);
+    str = str + temp5.data + ' ';
     temp5 = temp5.next;
-}*/
+}
+fs.writeFileSync('file1.txt', str);

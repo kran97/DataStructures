@@ -7,3 +7,8 @@ class linkedListNode{
         this.next = null;
     }
 }
+
+function input()
+{
+    
+}
