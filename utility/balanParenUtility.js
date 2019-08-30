@@ -11,56 +11,47 @@ function readFile()
     var arr = fs.readFileSync('arithmeticExp.txt').toString().split("");
     return arr;
 }
-function push(head, arr, i)
+function push(temp1, head, arr, i)
 {
     if(head.data == null)
     {
         head.data = arr[i];
-        //console.log(head.data);
+        return head;
     }
     else
     {
         var temp = new stackNode(arr[i]);
-        head.next = temp;
-        head = temp;
-        //console.log(head.data);
+        temp1.next = temp;
+        temp1 = temp;
+        return temp1;
     }
-    return head;
 }
 function pop(head)
 {
     var temp = head;
-    console.log(temp.data)
-    //console.log("pop"+temp.data)
-    //  if(temp.data == null)
-    //  {
-    //      console.log("No more '(' braces. Parentheses Unbalanced");
-    //      return;
-    //  }
-     if(temp.next == null && temp!=null)
+    if(head.data == null)
     {
-        console.log("if")
-        temp = null;
+        console.log("No more '(' braces in stack. Extra ')' are there. Parentheses Unbalanced.");
+        return head;
     }
-    else if(temp == null)
-     {
-         console.log("No more '(' braces. Parentheses Unbalanced");
-         return;
-     }
+    if(head.next == null && head!=null)
+    {
+        head.data = null;
+        return head;
+    }
     else
     {
         while(temp.next.next != null)
         {
-            console.log("While")
             temp = temp.next;
         }
-        console.log("outwhile")
         temp.next = null;
+        return temp;
     }
-    return temp ;
 }
 function print(current)
 {
+    console.log("Stack : ");
     while(current!=null)
     {
         console.log(current.data);
