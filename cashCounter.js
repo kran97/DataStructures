@@ -32,24 +32,6 @@ while(amount>min)
     for(var i=0; i<n; i++)
     {
         temp = cashUtil.push(temp, head, arr, i);
-        // console.log("person " + (i+1) + "'s amount : " + temp.data);
-        // //for(var i in arr)
-        // //{
-        //     var num = parseInt(read.question("Press 1 for deposit and 2 for withdrawl: "));
-        //     if(num === 1)
-        //     {
-        //         amount=amount+arr[i];
-        //         head = head.next;
-        //     }
-        //     else if(num === 2)
-        //     {
-        //         amount-=arr[i];
-        //         head = head.next;
-        //     }
-        // //}
-        // var current = head;
-        // console.log("Queue : ");
-        // cashUtil.print(current);
     }
     var current = head;
     console.log("Queue : ");
@@ -68,6 +50,17 @@ while(amount>min)
             if(temp.data < amount)
             {
                 amount = amount-temp.data;
+            }
+            else if(amount-temp.data < min)
+            {
+                console.log("Insufficient funds in bank");
+                console.log("Amount in bank : ",amount);
+                var current = head;
+                console.log("Queue : ");
+                cashUtil.print(current);
+                temp = temp.next;
+                head = head.next;
+                break;
             }
             else
             {
